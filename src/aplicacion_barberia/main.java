@@ -1,5 +1,5 @@
 package aplicacion_barberia;
-//Prueba de github
+
 import javax.swing.JOptionPane;
 
 public class main {
@@ -49,5 +49,10 @@ public class main {
     
     public static void main(String[] args) {
         menuAdmin(); // Llama al método menuAdmin directamente
+        
+        
+        //Prueba git
+        
+        
     }
 }
