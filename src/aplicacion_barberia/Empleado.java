@@ -4,6 +4,7 @@
  */
 package aplicacion_barberia;
 
+import Modelo.Barberia;
 import javax.swing.JOptionPane;
 
 public class Empleado extends Persona {
