@@ -109,16 +109,17 @@ public class Barberia {
         StringBuilder listadoEmpleados = new StringBuilder(); // Usamos StringBuilder para construir la cadena
         listadoEmpleados.append("Lista de Empleados:\n"); // Encabezado
 
-        // Recorremos la lista de clientes
+        // Recorremos la lista de empleados
         for (Empleado empleado : empleados) {
-            listadoEmpleados.append(empleado.toString()).append("\n"); // Agregamos cada cliente a la cadena
+            listadoEmpleados.append(empleado.toString()).append("\n"); // Agregamos cada empleado a la cadena
         }
 
         // Mostramos el resultado en un JOptionPane
         if (empleados.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay clientes registrados.");
+            JOptionPane.showMessageDialog(null, "No hay empleados registrados.");
         } else {
             JOptionPane.showMessageDialog(null, listadoEmpleados.toString());
         }
     }
+    
 }

@@ -1,65 +1,101 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Vista;
 
 import Controlador.AdministradorControl;
 import Modelo.Barberia;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- *
- * @author kevin
- */
-public class AdministradorVista {
+public class AdministradorVista extends JFrame {
     private AdministradorControl controlador;
-    
-    public AdministradorVista(AdministradorControl controlador){
+
+    public AdministradorVista(AdministradorControl controlador) {
         this.controlador = controlador;
+        initUI();
     }
-    
-    public static void menuAdmin() {
-        Barberia barberia = new Barberia();
-        AdministradorControl administrador = new AdministradorControl(barberia);
 
-        while (true) {
-            String menu = "1. Crear Cliente\n"
-                        + "2. Eliminar Cliente\n"
-                        + "3. Crear Empleado\n"
-                        + "4. Eliminar Empleado\n"
-                        + "5. Ver listado de Clientes\n"
-                        + "6. Ver listado de empleados\n"
-                        + "7. Salir";
+    private void initUI() {
+        setTitle("Administrador - Menú");
+        setSize(500, 350);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(null);
+        
 
-            String opcion = JOptionPane.showInputDialog(menu);
-            
-            switch (opcion) {
-                case "1":
-                    administrador.crearCliente();
-                    break;
-                case "2":
-                    administrador.eliminarCliente();
-                    break;
-                case "3":
-                    administrador.crearEmpleado();
-                    break;
-                case "4":
-                    administrador.eliminarEmpleado();
-                    break;
-                case "5":
-                    barberia.getClientes();
-                    break;
-                case "6":
-                    barberia.getEmpleados();
-                    break;
-                case "7":
-                    JOptionPane.showMessageDialog(null, "Saliendo...");
-                    System.exit(0);
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
+        // Crear botones para las opciones del menú
+        JButton btnCrearCliente = new JButton("Crear Cliente");
+        btnCrearCliente.setBounds(100, 30, 200, 30);
+        add(btnCrearCliente);
+
+        JButton btnEliminarCliente = new JButton("Eliminar Cliente");
+        btnEliminarCliente.setBounds(100, 70, 200, 30);
+        add(btnEliminarCliente);
+
+        JButton btnCrearEmpleado = new JButton("Crear Empleado");
+        btnCrearEmpleado.setBounds(100, 110, 200, 30);
+        add(btnCrearEmpleado);
+
+        JButton btnEliminarEmpleado = new JButton("Eliminar Empleado");
+        btnEliminarEmpleado.setBounds(100, 150, 200, 30);
+        add(btnEliminarEmpleado);
+
+        JButton btnVerClientes = new JButton("Ver Clientes");
+        btnVerClientes.setBounds(100, 190, 200, 30);
+        add(btnVerClientes);
+
+        JButton btnVerEmpleados = new JButton("Ver Empleados");
+        btnVerEmpleados.setBounds(100, 230, 200, 30);
+        add(btnVerEmpleados);
+
+        // Añadir ActionListeners para cada botón
+        btnCrearCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearCliente();
             }
-        }
+        });
+
+        btnEliminarCliente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.eliminarCliente();
+            }
+        });
+
+        btnCrearEmpleado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.crearEmpleado();
+            }
+        });
+
+        btnEliminarEmpleado.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.eliminarEmpleado();
+            }
+        });
+
+        btnVerClientes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.verListadoClientes();
+            }
+        });
+
+        btnVerEmpleados.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controlador.verListadoEmpleados();
+            }
+        });
+
+        setVisible(true);
     }
-    
+
+    public static void main(String[] args) {
+        Barberia barberia = new Barberia();
+        AdministradorControl adminControl = new AdministradorControl(barberia);
+        new AdministradorVista(adminControl); // Inicia la ventana gráfica de administrador
+    }
 }
