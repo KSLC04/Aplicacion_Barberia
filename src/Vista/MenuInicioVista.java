@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.AdministradorControl;
 import Controlador.EmpleadoControl;
+import Controlador.ClienteControl;  // Corregido: nombre del paquete Controlador
 import Modelo.Barberia;
 import java.awt.Color;
 import java.awt.Font;
@@ -125,11 +126,15 @@ public class MenuInicioVista extends JFrame {
             AdministradorControl adminControl = new AdministradorControl(barberia);
             new AdministradorVista(adminControl); // Pasar el controlador al menú admin
         } else if (role.equals("cliente")) {
-            JOptionPane.showMessageDialog(null, "Redirigiendo al menú de cliente...");
-            // Aquí puedes definir el menú de cliente
+            ClienteControl clienteControl = new ClienteControl(barberia);  // Se crea el controlador para cliente
+            new ClienteVista(clienteControl);  // Pasar el controlador al menú cliente
         } else if (role.equals("empleado")) {
             EmpleadoControl empleadoControl = new EmpleadoControl(barberia);
             new EmpleadoVista(empleadoControl); // Pasar el controlador al menú de empleado
         }
+    }
+
+    public static void main(String[] args) {
+        new MenuInicioVista();
     }
 }

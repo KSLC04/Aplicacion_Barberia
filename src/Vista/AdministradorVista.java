@@ -20,7 +20,7 @@ public class AdministradorVista extends JFrame {
 
     private void initUI() {
         setTitle("Administrador - Menú");
-        setSize(600, 400);
+        setSize(600, 380);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
