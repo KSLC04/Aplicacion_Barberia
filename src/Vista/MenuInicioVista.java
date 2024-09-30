@@ -1,6 +1,7 @@
 package Vista;
 
 import Controlador.AdministradorControl;
+import Controlador.EmpleadoControl;
 import Modelo.Barberia;
 import java.awt.Color;
 import java.awt.Font;
@@ -119,17 +120,16 @@ public class MenuInicioVista extends JFrame {
     private void redirectToMenu(String role) {
         this.dispose(); // Cierra la ventana de login
         Barberia barberia = new Barberia(); // Crear instancia de Barbería para ser usada
-        AdministradorControl adminControl = new AdministradorControl(barberia);
         
         if (role.equals("admin")) {
+            AdministradorControl adminControl = new AdministradorControl(barberia);
             new AdministradorVista(adminControl); // Pasar el controlador al menú admin
         } else if (role.equals("cliente")) {
             JOptionPane.showMessageDialog(null, "Redirigiendo al menú de cliente...");
-            //new MenuCliente(); // Aquí puedes definir el menú de cliente
+            // Aquí puedes definir el menú de cliente
         } else if (role.equals("empleado")) {
-            JOptionPane.showMessageDialog(null, "Redirigiendo al menú de empleado...");
-            //new MenuEmpleado(); // Aquí puedes definir el menú de empleado
+            EmpleadoControl empleadoControl = new EmpleadoControl(barberia);
+            new EmpleadoVista(empleadoControl); // Pasar el controlador al menú de empleado
         }
     }
-
 }

@@ -20,7 +20,7 @@ public class AdministradorVista extends JFrame {
 
     private void initUI() {
         setTitle("Administrador - Menú");
-        setSize(600, 350);
+        setSize(600, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -67,6 +67,13 @@ public class AdministradorVista extends JFrame {
         btnVerEmpleados.setForeground(Color.red);
         add(btnVerEmpleados);
 
+        // Crear botón "Volver al Menú de Inicio"
+        JButton btnVolverInicio = new JButton("Volver al Menú de Inicio");
+        btnVolverInicio.setBounds(350, 300, 200, 30);  // Posiciona el botón a la izquierda
+        btnVolverInicio.setBackground(Color.white);
+        btnVolverInicio.setForeground(Color.red);
+        add(btnVolverInicio);
+
         // Añadir ActionListeners para cada botón
         btnCrearCliente.addActionListener(new ActionListener() {
             @Override
@@ -110,6 +117,14 @@ public class AdministradorVista extends JFrame {
             }
         });
 
+        // Añadir ActionListener al botón "Volver al Menú de Inicio"
+        btnVolverInicio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                volverMenuInicio();
+            }
+        });
+
         setVisible(true);
     }
 
@@ -123,8 +138,14 @@ public class AdministradorVista extends JFrame {
         );
 
         JLabel jlImagen = new JLabel(imgEscalada); // Crear JLabel con la imagen
-        jlImagen.setBounds(0, 30, 300, 300); // Ubicar la imagen a la derecha
+        jlImagen.setBounds(0, 30, 300, 350); // Ubicar la imagen a la derecha
         add(jlImagen); // Añadir la imagen al JFrame
+    }
+
+    // Método para volver al menú de inicio
+    private void volverMenuInicio() {
+        dispose(); // Cerrar la ventana actual
+        new MenuInicioVista(); // Abrir la ventana de inicio
     }
 
     public static void main(String[] args) {
