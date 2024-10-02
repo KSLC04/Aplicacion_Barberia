@@ -1,15 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controlador;
 
 import Modelo.Barberia;
+import Modelo.CrearEmpleadoModelo;
+import Vista.AdministradorVista;
+import Vista.CrearEmpleadoVista;
 import aplicacion_barberia.Persona;
 
 public class AdministradorControl extends Persona {
-    private Barberia barberia;
+    public Barberia barberia;
+    public CrearEmpleadoModelo crearEmpleadoM;
+    public AdministradorVista adminVista;
 
+    public AdministradorControl(AdministradorVista obj) {
+    super();
+    this.barberia = new Barberia(); // Inicializamos Barberia
+    this.adminVista = obj; // Asegúrate de asignar adminVista
+    }
+    
+    public void ocultarAdminVista() {
+    adminVista.setVisible(false); // Oculta la ventana de administrador
+    }
+    
     public AdministradorControl(Barberia barberia) {
         super();
         this.barberia = barberia; // Referencia a la barbería
@@ -35,14 +46,18 @@ public class AdministradorControl extends Persona {
         barberia.eliminarEmpleado();
     }
     
-    // Metodo para obtener la lista de clientes
-    public void verListadoClientes(){
+    // Método para obtener la lista de clientes
+    public void verListadoClientes() {
         barberia.getClientes();
     }
     
-    // Metodo para obtener la lista de Empleados
-    public void verListadoEmpleados(){
+    // Método para obtener la lista de empleados
+    public void verListadoEmpleados() {
         barberia.getEmpleados();
     }
-    
+
+    // Método corregido para devolver la instancia de Barberia
+    public Barberia getBarberia() {
+        return barberia;
+    }
 }

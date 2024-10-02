@@ -3,17 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import Modelo.CrearEmpleadoModelo;
+import Vista.AdministradorVista;
+import Vista.CrearEmpleadoVista;
 import aplicacion_barberia.Cliente;
 import aplicacion_barberia.Empleado;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Barberia {
+    public CrearEmpleadoModelo crearEmpleadoM;
+    public AdministradorVista adminVista;
     private ArrayList<Cliente> clientes;
-    private ArrayList<Empleado> empleados;
+    private ArrayList<Empleado> empleados; 
 
     public Barberia() {
+        this.adminVista = adminVista;
         clientes = new ArrayList<>();
         empleados = new ArrayList<>();
     }
@@ -57,15 +62,9 @@ public class Barberia {
         empleados.add(empleado);
     }
     
-    public void crearEmpleado() {
-        Empleado nuevoEmpleado = new Empleado();
-        nuevoEmpleado.setNombre();
-        nuevoEmpleado.setTelefono();
-        String especialidad = JOptionPane.showInputDialog("Ingrese la especialidad del empleado:");
-        nuevoEmpleado.setEspecialidad(especialidad);
-        
-        agregarEmpleado(nuevoEmpleado); // Agrega el empleado a la lista de la barbería
-        JOptionPane.showMessageDialog(null, "Empleado creado: " + nuevoEmpleado.getNombre());
+    public void crearEmpleado() {               //CAMBIO 2
+        CrearEmpleadoVista crearEmpleadoVista = new CrearEmpleadoVista(null);
+        crearEmpleadoVista.setVisible(true);
     }
 
     public boolean eliminarEmpleado(String nombre) {
@@ -104,21 +103,11 @@ public class Barberia {
             JOptionPane.showMessageDialog(null, listadoClientes.toString());
         }
     }
-
-    public void getEmpleados() {
-        StringBuilder listadoEmpleados = new StringBuilder(); // Usamos StringBuilder para construir la cadena
-        listadoEmpleados.append("Lista de Empleados:\n"); // Encabezado
-
-        // Recorremos la lista de clientes
-        for (Empleado empleado : empleados) {
-            listadoEmpleados.append(empleado.toString()).append("\n"); // Agregamos cada cliente a la cadena
-        }
-
-        // Mostramos el resultado en un JOptionPane
-        if (empleados.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay clientes registrados.");
-        } else {
-            JOptionPane.showMessageDialog(null, listadoEmpleados.toString());
-        }
-    }
+  
+    public void getEmpleados() { //CAMBIO 2
+        CrearEmpleadoModelo modelo = new CrearEmpleadoModelo(null);
+        modelo.consultarEmpleados();
+    
+    }   
 }
+
